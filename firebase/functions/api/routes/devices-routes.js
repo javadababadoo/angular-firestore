@@ -1,13 +1,18 @@
 'use strict';
 module.exports = function(app) {
-  var deviceList = require('../controllers/devices-controller');
+  var deviceController = require('../controllers/devices-controller');
+
+  var sessionController = require('../controllers/session-controller');
 
   app.route('/device')
-  .get(deviceList.list_all_devices)
-  .post(deviceList.add_device);
+  .get(deviceController.list_all_devices)
+  .post(deviceController.add_device);
 
   app.route('/device/:deviceId')
-  .get(deviceList.read_device)
-  .put(deviceList.update_device);
+  .get(deviceController.read_device)
+  .put(deviceController.update_device);
+
+  app.route('/session')
+  .post(sessionController.login);
 
 };
