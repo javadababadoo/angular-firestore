@@ -6,4 +6,8 @@ module.exports = function(app) {
   .get(deviceList.list_all_devices)
   .post(deviceList.add_device);
 
+  app.route('/device/:deviceId')
+  .get(deviceList.read_device)
+  .put(deviceList.update_device);
+
 };
